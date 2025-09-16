@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Brew Coffee</title>
+  <style>
+    :root{
+      --bg:#2b1b12;
+      --ink:#f7efe9;
+      --muted:#d6c2b8;
+      --accent:#d88f52;
+    }
+
+    *,
+    *::before,
+    *::after { box-sizing: border-box; }
+
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+      font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
+
+    .wrap{ width:min(1100px,92vw); margin:0 auto; padding:0 16px; }
+
+    .site-header{
+      position:sticky; top:0;
+      backdrop-filter:blur(6px);
+      background:color-mix(in srgb, var(--bg), transparent 30%);
+      border-bottom:1px solid rgba(255,255,255,.1);
+      z-index:5;
+    }
+    .site-header .wrap{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+    }
+    .logo{ margin:0; font-size:22px; }
+    .nav a{ color:var(--muted); text-decoration:none; margin-left:18px; }
+    .nav a:hover{ color:var(--ink); }
+
+    .hero{
+      position:relative;
+      padding:100px 0 120px;
+      text-align:center;
+      isolation:isolate;
+    }
+    .hero h2{ font-size:clamp(28px,4vw + 8px,48px); margin:0 0 8px; }
+    .hero p{ margin:0 0 24px; color:var(--muted); }
+    .btn{
+      border:0; border-radius:999px; padding:14px 28px;
+      background:var(--accent); color:#fff; font-weight:600; cursor:pointer;
+      box-shadow:0 10px 30px rgba(0,0,0,.3);
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute; inset:0;
+      opacity:0;
+      background:radial-gradient(60% 60% at 50% 0%, rgba(216,143,82,.35), transparent 60%);
+      z-index:2;
+    }
+
+    .features{
+      padding:48px 0 96px;
+      background:#3c251a;
+      border-top:1px solid rgba(255,255,255,.1);
+    }
+    .features h3{ margin:0 0 16px; }
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:16px; margin:0; padding:0; list-style:none;
+    }
+    .grid li{
+      padding:16px;
+      border:1px solid rgba(255,255,255,.15);
+      border-radius:12px;
+    }
+
+    .site-footer{
+      border-top:1px solid rgba(255,255,255,.1);
+      padding:28px 0 40px;
+      color:var(--muted); text-align:center;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <h1 class="logo">☕ Brew Coffee</h1>
+      <nav class="nav">
+        <a href="#menu">Menu</a>
+        <a href="#story">Our Story</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <h2>Freshly Brewed Happiness</h2>
+        <p>Small batch, ethically sourced, roasted daily.</p>
+        <button id="cta" class="btn">Order Now</button>
+      </div>
+    </section>
+
+    <section id="menu" class="features">
+      <div class="wrap">
+        <h3>Customer Favorites</h3>
+        <ul class="grid">
+          <li>Espresso</li>
+          <li>Latte</li>
+          <li>Cold Brew</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">© 2025 BrewBug Coffee</div>
+  </footer>
+
+  <script>
+    document.getElementById('cta').addEventListener('click', () => {
+      alert('Order placed! ✅');
+    });
+  </script>
+</body>
+</html>
