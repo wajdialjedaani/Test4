@@ -4,137 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Academy</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary-color: #6a11cb;
-            --secondary-color: #2575fc;
-            --dark-color: #121212;
-            --light-color: #f5f5f5;
-            --text-color: #333;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+        :root {
+            --primary-color: #4b0082; /* Indigo */
+            --secondary-color: #ffc107; /* Amber */
+            --accent-color: #ff4081; /* Pink */
+            --background-light: #f4f4f9;
+            --text-dark: #333;
+            --text-light: #fff;
         }
 
         body {
             font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: var(--background-light);
+            color: var(--text-dark);
             line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--light-color);
         }
 
-        /* General Styles */
-        .container {
-            max-width: 1100px;
-            margin: auto;
-            overflow: hidden;
-            padding: 0 2rem;
-        }
-
-        h1, h2, h3 {
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        section {
-            padding: 4rem 0;
-            text-align: center;
-        }
-
-        .btn-cta, .btn-login, .btn-signup, .btn-course {
-            display: inline-block;
-            padding: 0.75rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: transform 0.3s ease;
-        }
-
-        .btn-cta {
-            background-image: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-            color: white;
-        }
-
-        .btn-login {
-            background: none;
-            color: var(--dark-color);
-            border: 2px solid var(--dark-color);
-        }
-
-        .btn-signup {
-            background-image: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            margin-left: 10px;
-        }
-
-        .btn-cta:hover, .btn-course:hover, .btn-login:hover, .btn-signup:hover {
-            transform: translateY(-5px);
-        }
-
-        /* Header */
-        .main-header {
+        /* Navigation Bar */
+        .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 3rem;
-            background: rgba(255, 255, 255, 0.9);
+            background-color: var(--primary-color);
+            padding: 1rem 2rem;
+            color: var(--text-light);
             position: fixed;
-            top: 0;
             width: 100%;
+            top: 0;
+            left: 0;
             z-index: 1000;
-            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
-        .main-header .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        .main-nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        .main-nav ul li a {
-            color: var(--dark-color);
-            text-decoration: none;
-            padding: 0 1rem;
+        .navbar .logo {
+            font-size: 1.5rem;
             font-weight: 600;
+        }
+
+        .navbar .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: 400;
             transition: color 0.3s ease;
         }
 
-        .main-nav ul li a:hover {
+        .navbar .nav-links a:hover {
             color: var(--secondary-color);
         }
 
         /* Hero Section */
-        .hero-section {
+        .hero {
+            position: relative;
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
-            color: white;
-            position: relative;
+            color: var(--text-light);
             overflow: hidden;
         }
 
-        #hero-video {
+        .hero-video {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             z-index: -1;
-            transform: translate(-50%, -50%);
         }
 
         .hero-overlay {
@@ -143,54 +87,70 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: -1;
         }
 
         .hero-content {
-            position: relative;
             z-index: 1;
             max-width: 800px;
-            padding: 0 2rem;
+            padding: 2rem;
         }
 
         .hero-content h1 {
             font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
         }
 
         .hero-content p {
             font-size: 1.2rem;
+        }
+
+        /* Sections */
+        .section {
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
             margin-bottom: 2rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+        
+        .section h2::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
-        /* Courses Section */
-        .courses-section {
-            background-color: var(--light-color);
-        }
-
-        .course-grid {
+        .courses-grid, .gallery-grid, .news-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
 
-        .course-card {
-            background: white;
+        .card {
+            background-color: var(--text-light);
             border-radius: 10px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             overflow: hidden;
-            text-align: left;
             transition: transform 0.3s ease;
         }
 
-        .course-card:hover {
+        .card:hover {
             transform: translateY(-10px);
         }
 
-        .course-card img {
+        .card img {
             width: 100%;
             height: 200px;
             object-fit: cover;
@@ -201,164 +161,127 @@
         }
 
         .card-content h3 {
-            margin-bottom: 0.5rem;
+            margin-top: 0;
+            color: var(--primary-color);
         }
-
-        .btn-course {
-            background-image: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            text-align: center;
-            width: 100%;
-            border-radius: 5px;
-            margin-top: 1rem;
-        }
-
-        /* News Section */
-        .news-section {
-            background-color: #e9eef7;
-        }
-
-        .news-container {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .news-card {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            overflow: hidden;
-            width: 45%;
-            text-align: left;
-        }
-
-        .news-card img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
-
-        .news-content {
-            padding: 1.5rem;
-        }
-
-        .news-content h3 {
-            margin-bottom: 0.5rem;
-        }
-
-        .news-content span {
-            color: #888;
-            font-size: 0.9rem;
-        }
-
+        
         /* Footer */
-        .main-footer {
-            background-color: var(--dark-color);
-            color: var(--light-color);
+        .footer {
+            background-color: var(--primary-color);
+            color: var(--text-light);
             text-align: center;
-            padding: 1.5rem 0;
+            padding: 2rem;
         }
 
+        /* JavaScript-specific styles for smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
     </style>
 </head>
 <body>
 
-    <header class="main-header">
-        <a href="#" class="logo">AI Academy</a>
-        <nav class="main-nav">
-            <ul>
-                <li><a href="#courses">Courses</a></li>
-                <li><a href="#news">News</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-        <div class="nav-cta">
-            <a href="#" class="btn-login">Login</a>
-            <a href="#" class="btn-signup">Sign Up</a>
+    <nav class="navbar">
+        <div class="logo">AI Academy</div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#courses">Courses</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#news">News</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <header id="home" class="hero">
+        <video class="hero-video" autoplay muted loop src="https://assets.mixkit.co/videos/preview/mixkit-futuristic-abstract-shapes-40292-large.mp4"></video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Welcome to the AI Academy</h1>
+            <p>Your journey into the future of artificial intelligence starts here.</p>
         </div>
     </header>
 
-    <section class="hero-section">
-        <video autoplay muted loop id="hero-video">
-            <source src="https://videos.pexels.com/video-files/5586617/5586617-uhd_2160_3840_30fps.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1>Learn the Future. Master AI.</h1>
-            <p>Your journey into artificial intelligence starts here. Explore our world-class courses and build a better tomorrow.</p>
-            <a href="#courses" class="btn-cta">Explore Courses</a>
-        </div>
-    </section>
-
-    <section id="courses" class="courses-section">
-        <h2>Featured Courses</h2>
-        <div class="course-grid">
-            <div class="course-card">
-                <img src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Machine Learning Fundamentals">
+    <section id="courses" class="section">
+        <h2>Our Courses</h2>
+        <div class="courses-grid">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1620712949543-f14d2a71f280?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&h=200&fit=crop" alt="Machine Learning course">
                 <div class="card-content">
-                    <h3>Machine Learning Fundamentals</h3>
-                    <p>Learn the core concepts of ML, from supervised to unsupervised learning.</p>
-                    <a href="#" class="btn-course">Learn More</a>
+                    <h3>Machine Learning Basics</h3>
+                    <p>Learn the fundamental concepts of AI and machine learning.</p>
                 </div>
             </div>
-            <div class="course-card">
-                <img src="https://images.pexels.com/photos/5926392/pexels-photo-5926392.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Deep Learning with Python">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1620712949543-f14d2a71f280?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&h=200&fit=crop" alt="Deep Learning course">
                 <div class="card-content">
                     <h3>Deep Learning with Python</h3>
-                    <p>Build and train neural networks using Python and popular frameworks.</p>
-                    <a href="#" class="btn-course">Learn More</a>
+                    <p>Dive into neural networks and advanced deep learning techniques.</p>
                 </div>
             </div>
-            <div class="course-card">
-                <img src="https://images.pexels.com/photos/3862632/pexels-photo-3862632.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Data Science for Beginners">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1620712949543-f14d2a71f280?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&h=200&fit=crop" alt="AI in Robotics course">
                 <div class="card-content">
-                    <h3>Data Science for Beginners</h3>
-                    <p>An introduction to data analysis, visualization, and practical applications.</p>
-                    <a href="#" class="btn-course">Learn More</a>
+                    <h3>AI for Robotics</h3>
+                    <p>Explore the application of AI in building intelligent robots.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="news" class="news-section">
-        <h2>Latest AI News</h2>
-        <div class="news-container">
-            <div class="news-card">
-                <img src="https://images.pexels.com/photos/8133379/pexels-photo-8133379.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="AI in Healthcare">
-                <div class="news-content">
-                    <h3>AI Revolutionizes Healthcare</h3>
-                    <p>Read about how AI is transforming diagnostics and patient care.</p>
-                    <span>September 10, 2025</span>
+    <section id="gallery" class="section" style="background-color: var(--primary-color);">
+        <h2 style="color: var(--text-light);">Gallery</h2>
+        <div class="gallery-grid">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1549490349-8643362836ac?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&h=200&fit=crop" alt="Gallery image 1">
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1549490349-8643362836ac?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&h=200&fit=crop" alt="Gallery image 2">
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1549490349-8643362836ac?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&h=200&fit=crop" alt="Gallery image 3">
+            </div>
+        </div>
+    </section>
+
+    <section id="news" class="section">
+        <h2>Latest News</h2>
+        <div class="news-grid">
+            <div class="card">
+                <div class="card-content">
+                    <h3>New AI Research Published</h3>
+                    <p>Our team has published a groundbreaking paper on AI ethics.</p>
                 </div>
             </div>
-            <div class="news-card">
-                <img src="https://images.pexels.com/photos/5926394/pexels-photo-5926394.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Robotics and AI">
-                <div class="news-content">
-                    <h3>The Future of Robotics and AI</h3>
-                    <p>Explore the latest advancements in AI-powered robotics and automation.</p>
-                    <span>September 05, 2025</span>
+            <div class="card">
+                <div class="card-content">
+                    <h3>Workshops for Beginners</h3>
+                    <p>Join our free workshops this month to start your AI journey.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <h3>Student Projects Showcase</h3>
+                    <p>See the amazing projects our students have created this semester.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="main-footer">
-        <p>&copy; 2025 AI Academy. All Rights Reserved.</p>
+    <footer id="contact" class="footer">
+        <p>&copy; 2024 AI Academy. All Rights Reserved.</p>
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const heroVideo = document.getElementById('hero-video');
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
 
-            if (heroVideo) {
-                heroVideo.play();
-            }
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
         });
     </script>
-
 </body>
 </html>
